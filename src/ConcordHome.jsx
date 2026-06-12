@@ -314,7 +314,7 @@ export default function ConcordHome() {
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <NavItem label="Home" active />
-            <NavItem label="About Us" href="/about" items={["Vision","Leadership","Our Journey","Quality & Certifications","Investor Relations"]} href="/about" />
+            <NavItem label="About Us" href="/about" />
             <NavItem label="Technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
             <NavItem label="Products & Solutions" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
             <NavItem label="Projects" />
