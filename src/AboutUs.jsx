@@ -41,8 +41,9 @@ function DropItem({ children }) {
   );
 }
 
-function NavItem({ label, items, active }) {
+function NavItem({ label, items, active, href }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <div style={{ position: "relative" }}
       onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
@@ -54,6 +55,7 @@ function NavItem({ label, items, active }) {
         borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
         transition: "color 0.15s",
       }}
+        onClick={() => href && navigate(href)}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
@@ -211,8 +213,8 @@ export default function AboutUs() {
         <div style={{ maxWidth: 1440, width: "100%", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <ConcordLogo />
           <div style={{ display: "flex", alignItems: "center" }}>
-            <NavItem label="Home" />
-            <NavItem label="About Us" active />
+            <NavItem label="Home" href="/" />
+            <NavItem label="About Us" active href="/about" />
             <NavItem label="Technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
             <NavItem label="Products & Solutions" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
             <NavItem label="Projects" />
