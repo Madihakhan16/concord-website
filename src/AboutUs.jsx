@@ -43,22 +43,32 @@ function DropItem({ children }) {
 
 function NavItem({ label, items, active, href }) {
   const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    if (href) {
+      setOpen(false);
+      window.location.href = href;
+    }
+  };
   return (
     <div style={{ position: "relative" }}
-      onMouseEnter={() => items && setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button style={{
-        display: "inline-flex", alignItems: "center", gap: 3,
-        height: 64, padding: "0 10px", background: "none", border: "none",
-        fontSize: 12.5, color: active ? "#E31E24" : "#fff",
-        fontWeight: active ? 600 : 400, cursor: "pointer",
-        borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
-        transition: "color 0.15s",
-      }}
-        onClick={() => { if (href) window.location.href = href; }}
+      onMouseEnter={() => { if (items && !href) setOpen(true); }}
+      onMouseLeave={() => setOpen(false)}>
+      <button
+        onClick={handleClick}
+        style={{
+          display: "inline-flex", alignItems: "center", gap: 3,
+          height: 64, padding: "0 10px", background: "none", border: "none",
+          fontSize: 12.5, color: active ? "#E31E24" : "#fff",
+          fontWeight: active ? 600 : 400, cursor: "pointer",
+          borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
+          transition: "color 0.15s",
+        }}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
-        {label}{items && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
+        {label}
+        {items && !href && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
+        {items && href && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
       </button>
       {items && open && (
         <div style={{
@@ -67,7 +77,9 @@ function NavItem({ label, items, active, href }) {
           borderRadius: 8, minWidth: 220, padding: "6px 0",
           boxShadow: "0 20px 60px rgba(0,0,0,0.95)",
         }}>
-          {items.map(item => <DropItem key={item}>{item}</DropItem>)}
+          {items.map(item => (
+            <DropItem key={item}>{item}</DropItem>
+          ))}
         </div>
       )}
     </div>
