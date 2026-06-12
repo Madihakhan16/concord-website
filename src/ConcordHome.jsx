@@ -536,7 +536,7 @@ export default function ConcordHome() {
             <div>
               <ConcordLogo size="footer" />
               <div style={{ marginTop: 14 }}>
-                <p style={{ fontSize: 13, color: "#9CA3AF", marginBottom: 14 }}>Engineering Mobility.<br/>Powering Progress.</p>
+                
                 <p style={{ fontSize: 12.5, color: "#6B7280", lineHeight: 1.75, marginBottom: 22 }}>
                   Concord Group combines the engineering excellence of Concord Control Systems and Advanced Rail Controls to deliver innovative, reliable and sustainable rail solutions that move the world forward.
                 </p>
