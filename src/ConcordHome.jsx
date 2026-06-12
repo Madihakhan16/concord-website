@@ -215,24 +215,32 @@ function SolutionCard({ img, icon, label, desc }) {
 // ── NavItem with dropdown ────────────────────────────────────────────────────────
 function NavItem({ label, items, active, href }) {
   const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    if (href) {
+      setOpen(false);
+      window.location.href = href;
+    }
+  };
   return (
     <div style={{ position: "relative" }}
-      onMouseEnter={() => items && setOpen(true)}
+      onMouseEnter={() => { if (items && !href) setOpen(true); }}
       onMouseLeave={() => setOpen(false)}>
-      <button style={{
-        display: "inline-flex", alignItems: "center", gap: 3,
-        height: 64, padding: "0 10px", background: "none", border: "none",
-        fontSize: 12.5, color: active ? "#E31E24" : "#fff",
-        fontWeight: active ? 600 : 400, cursor: "pointer",
-        borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
-        transition: "color 0.15s",
-      }}
-        onClick={() => { if (href) window.location.href = href; }}
+      <button
+        onClick={handleClick}
+        style={{
+          display: "inline-flex", alignItems: "center", gap: 3,
+          height: 64, padding: "0 10px", background: "none", border: "none",
+          fontSize: 12.5, color: active ? "#E31E24" : "#fff",
+          fontWeight: active ? 600 : 400, cursor: "pointer",
+          borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
+          transition: "color 0.15s",
+        }}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
         {label}
-        {items && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
+        {items && !href && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
+        {items && href && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
       </button>
       {items && open && (
         <div style={{
