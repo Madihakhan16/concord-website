@@ -317,13 +317,13 @@ export default function ConcordHome() {
             <div style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.6 }}>Engineering Mobility.<br/>Powering Progress.</div>
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <NavItem label="Home" active />
+            <NavItem label="Home" active href="/" />
             <NavItem label="About Us" href="/about" />
-            <NavItem label="Technologies" href="/technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
-            <NavItem label="Products & Solutions" href="/products" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
+            <NavItem label="Technologies" href="/technologies" />
+            <NavItem label="Products & Solutions" href="/products" />
             <NavItem label="Projects" href="/projects" />
             <NavItem label="Investors" href="/investors" />
-            <NavItem label="Media" href="/media" items={["Press Releases","Gallery","Videos"]} />
+            <NavItem label="Media" href="/media" />
             <NavItem label="Careers" href="/careers" />
             <NavItem label="Contact Us" href="/contact" />
           </div>
