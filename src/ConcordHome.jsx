@@ -267,7 +267,6 @@ function DropItem({ children }) {
         color: hov ? "#fff" : "#9CA3AF",
         background: hov ? "rgba(255,255,255,0.05)" : "transparent",
         borderLeft: `2px solid ${hov ? "#E31E24" : "transparent"}`,
-        
         cursor: "pointer", transition: "all 0.12s",
       }}>
       {children}
