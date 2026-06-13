@@ -216,13 +216,13 @@ export default function AboutUs() {
           <div style={{ display: "flex", alignItems: "center" }}>
             <NavItem label="Home" href="/" />
             <NavItem label="About Us" active href="/about" />
-            <NavItem label="Technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
-            <NavItem label="Products & Solutions" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
-            <NavItem label="Projects" />
-            <NavItem label="Investors" />
-            <NavItem label="Media" items={["Press Releases","Gallery","Videos"]} />
-            <NavItem label="Careers" />
-            <NavItem label="Contact Us" />
+            <NavItem label="Technologies" href="/technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
+            <NavItem label="Products & Solutions" href="/products" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
+            <NavItem label="Projects" href="/projects" />
+            <NavItem label="Investors" href="/investors" />
+            <NavItem label="Media" href="/media" items={["Press Releases","Gallery","Videos"]} />
+            <NavItem label="Careers" href="/careers" />
+            <NavItem label="Contact Us" href="/contact" />
           </div>
           <button style={{
             display: "inline-flex", alignItems: "center", gap: 8, flexShrink: 0,
