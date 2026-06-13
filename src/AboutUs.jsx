@@ -47,7 +47,7 @@ function NavItem({ label, items, active, href }) {
   const navigate = useNavigate();
   return (
     <div style={{ position: "relative" }}
-      onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      onMouseEnter={() => items && setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button style={{
         display: "inline-flex", alignItems: "center", gap: 3,
         height: 64, padding: "0 10px", background: "none", border: "none",
