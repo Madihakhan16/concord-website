@@ -314,14 +314,14 @@ export default function ConcordHome() {
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <NavItem label="Home" active />
-            <NavItem label="About Us" href="/about" items={["Vision","Leadership","Our Journey","Quality & Certifications","Investor Relations"]} href="/about" />
-            <NavItem label="Technologies" items={["Railway Safety Intelligence","Locomotive Control Systems","Green Rail Mobility","Embedded Electronics","AI Diagnostics & Monitoring","Railway Energy Systems"]} />
-            <NavItem label="Products & Solutions" items={["Signaling Solutions","Automation & Control","Electrification Systems","Turnkey Projects","O&M Services"]} />
-            <NavItem label="Projects" />
-            <NavItem label="Investors" />
-            <NavItem label="Media" items={["Press Releases","Gallery","Videos"]} />
-            <NavItem label="Careers" />
-            <NavItem label="Contact Us" />
+            <NavItem label="About Us" href="/about" />
+            <NavItem label="Technologies" href="/technologies" items={[...]} />
+            <NavItem label="Products & Solutions" href="/products" items={[...]} />
+            <NavItem label="Projects" href="/projects" />
+            <NavItem label="Investors" href="/investors" />
+            <NavItem label="Media" href="/media" items={[...]} />
+            <NavItem label="Careers" href="/careers" />
+            <NavItem label="Contact Us" href="/contact" />
           </div>
           <button style={{
             display: "inline-flex", alignItems: "center", gap: 8, flexShrink: 0,
