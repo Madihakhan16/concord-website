@@ -214,18 +214,10 @@ function SolutionCard({ img, icon, label, desc }) {
 }
 
 // ── NavItem with dropdown ────────────────────────────────────────────────────────
-function NavItem({ label, items, active, href }) {
-  const [open, setOpen] = useState(false);
+function NavItem({ label, active, href }) {
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (href) navigate(href);
-  };
-
   return (
-    <div style={{ position: "relative" }}
-      onMouseEnter={() => items && setOpen(true)}
-      onMouseLeave={() => setOpen(false)}>
+    <div style={{ position: "relative" }}>
       <button style={{
         display: "inline-flex", alignItems: "center", gap: 3,
         height: 64, padding: "0 10px", background: "none", border: "none",
@@ -234,43 +226,13 @@ function NavItem({ label, items, active, href }) {
         borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
         transition: "color 0.15s",
       }}
-        onClick={handleClick}
+        onClick={() => href && navigate(href)}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
         {label}
-        {items && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
       </button>
-      {items && open && (
-        <div style={{
-          position: "absolute", top: 64, left: 0, zIndex: 99999,
-          background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: 8, minWidth: 220, padding: "6px 0",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.95)",
-        }}>
-          {items.map(item => (
-            <DropItem key={item}>{item}</DropItem>
-          ))}
-        </div>
-      )}
     </div>
-  );
-}
-
-function DropItem({ children }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <button onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-      style={{
-        display: "block", width: "100%", textAlign: "left",
-        padding: "10px 20px", fontSize: 13,
-        color: hov ? "#fff" : "#9CA3AF",
-        background: hov ? "rgba(255,255,255,0.05)" : "transparent",
-        borderLeft: `2px solid ${hov ? "#E31E24" : "transparent"}`,
-        cursor: "pointer", transition: "all 0.12s",
-      }}>
-      {children}
-    </button>
   );
 }
 
