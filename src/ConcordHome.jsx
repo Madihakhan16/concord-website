@@ -217,9 +217,14 @@ function SolutionCard({ img, icon, label, desc }) {
 function NavItem({ label, items, active, href }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (href) navigate(href);
+  };
+
   return (
     <div style={{ position: "relative" }}
-      onMouseEnter={() => setOpen(true)}
+      onMouseEnter={() => items && setOpen(true)}
       onMouseLeave={() => setOpen(false)}>
       <button style={{
         display: "inline-flex", alignItems: "center", gap: 3,
@@ -229,7 +234,7 @@ function NavItem({ label, items, active, href }) {
         borderBottom: active ? "2px solid #E31E24" : "2px solid transparent",
         transition: "color 0.15s",
       }}
-        onClick={() => href && navigate(href)}
+        onClick={handleClick}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
