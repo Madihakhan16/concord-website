@@ -29,25 +29,12 @@ const LI = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="currentCo
 const YT = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 00-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.4a2.8 2.8 0 00-2 2A29 29 0 001 12a29 29 0 00.5 5.6 2.8 2.8 0 002 2C5.1 20 12 20 12 20s6.9 0 8.5-.4a2.8 2.8 0 002-2A29 29 0 0023 12a29 29 0 00-.5-5.6zM9.75 15V9l5.75 3-5.75 3z"/></svg>;
 const XI = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.25h3.3l-7.2 8.3 8.5 11.2H16.2l-5.2-6.8-6 6.8H1.7l7.7-8.8L1.3 2.25H8.1l4.7 6.2 5.4-6.2zm-1.2 17.5h1.8L7.1 4.1H5.1l11.9 15.65z"/></svg>;
 
-function DropItem({ children }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <button onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
-      display: "block", width: "100%", textAlign: "left", padding: "10px 20px",
-      fontSize: 13, color: hov ? "#fff" : "#9CA3AF",
-      background: hov ? "rgba(255,255,255,0.05)" : "transparent",
-      borderLeft: `2px solid ${hov ? "#E31E24" : "transparent"}`,
-      cursor: "pointer", transition: "all 0.12s", border: "none",
-    }}>{children}</button>
-  );
-}
 
-function NavItem({ label, items, active, href }) {
-  const [open, setOpen] = useState(false);
+
+function NavItem({ label, active, href }) {
   const navigate = useNavigate();
   return (
-    <div style={{ position: "relative" }}
-      onMouseEnter={() => items && setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div style={{ position: "relative" }}>
       <button style={{
         display: "inline-flex", alignItems: "center", gap: 3,
         height: 64, padding: "0 10px", background: "none", border: "none",
@@ -60,18 +47,8 @@ function NavItem({ label, items, active, href }) {
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#E31E24"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#fff"; }}
       >
-        {label}{items && <span style={{ opacity: 0.6, marginLeft: 2 }}><ChevronDown /></span>}
+        {label}
       </button>
-      {items && open && (
-        <div style={{
-          position: "absolute", top: 64, left: 0, zIndex: 99999,
-          background: "#0a0a0a", border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: 8, minWidth: 220, padding: "6px 0",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.95)",
-        }}>
-          {items.map(item => <DropItem key={item}>{item}</DropItem>)}
-        </div>
-      )}
     </div>
   );
 }
